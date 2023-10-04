@@ -2,7 +2,7 @@
 
 namespace BoletoNetCore
 {
-    [CarteiraCodigo("019")]
+    [CarteiraCodigo("19")]
     internal class BancoBradescoCarteira19 : BancoBradescoCarteiraBase, ICarteira<BancoBradesco>
     {
         internal static Lazy<ICarteira<BancoBradesco>> Instance { get; } = new Lazy<ICarteira<BancoBradesco>>(() => new BancoBradescoCarteira19());
