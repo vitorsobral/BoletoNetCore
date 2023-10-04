@@ -27,11 +27,6 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
 
-    - name: Build DotNet
-      # You may pin to the exact commit or the version.
-      # uses: Elskom/build-dotnet@54d97a0f7d5d5ca946404976db00d27386b09254
-      uses: Elskom/build-dotnet@v1.1.1
-
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
 
