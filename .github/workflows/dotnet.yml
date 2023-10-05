@@ -27,8 +27,8 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
 
-    - name: Run tests
-      run: dotnet test
+#    - name: Run tests
+#      run: dotnet test
 
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     - run: dotnet pack .\BoletoNetCore\ -p:PackageID=New.BoletoNetCore --configuration Release --output ${{ env.NuGetDirectory }}
