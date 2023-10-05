@@ -37,5 +37,14 @@ namespace BoletoNetCore
             Beneficiario.CodigoFormatado = $"{contaBancaria.Agencia}-{contaBancaria.DigitoAgencia} / {contaBancaria.Conta}-{contaBancaria.DigitoConta}";
         }
 
+        public override string FormataCodigoBarraCampoLivre(Boleto boleto)
+        {
+            if (boleto.Carteira.Length == 3)
+            {
+                boleto.Carteira = boleto.Carteira.Replace("0", "");
+            }
+
+            return base.FormataCodigoBarraCampoLivre(boleto);
+        }
     }
 }
