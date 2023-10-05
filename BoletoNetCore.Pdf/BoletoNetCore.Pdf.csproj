@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PackageId>BoletoNetCore.PDF</PackageId>
     <title>BoletoNetCore.PDF</title>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <authors>BoletoNetCore</authors>
     <owners>BoletoNetCore</owners>
     <projectUrl>https://github.com/BoletoNet/BoletoNetCore/</projectUrl>
