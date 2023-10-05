@@ -1,8 +1,7 @@
-using System;
-using System.Collections.Generic;
 using BoletoNetCore.Exceptions;
 using BoletoNetCore.Extensions;
-using Microsoft.VisualBasic;
+using System;
+using System.Collections.Generic;
 
 namespace BoletoNetCore
 {
@@ -44,10 +43,6 @@ namespace BoletoNetCore
         /// </summary>
         public static void FormataCodigoBarra(Boleto boleto)
         {
-            if(boleto.Carteira.Length == 3)
-            {
-                boleto.Carteira = boleto.Carteira.Replace("0", "");
-            }
             var banco = boleto.Banco;
             var codigoBarra = boleto.CodigoBarra;
             codigoBarra.CampoLivre = banco.FormataCodigoBarraCampoLivre(boleto);

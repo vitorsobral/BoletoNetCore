@@ -1,5 +1,5 @@
-﻿using System;
-using BoletoNetCore.Extensions;
+﻿using BoletoNetCore.Extensions;
+using System;
 using static System.String;
 
 namespace BoletoNetCore
@@ -8,7 +8,6 @@ namespace BoletoNetCore
     {
         public virtual void FormataNossoNumero(Boleto boleto)
         {
-
             // Nosso número não pode ter mais de 11 dígitos
 
             if (IsNullOrWhiteSpace(boleto.NossoNumero) || boleto.NossoNumero == "00000000000")
@@ -27,13 +26,14 @@ namespace BoletoNetCore
                 boleto.NossoNumeroDV = (boleto.Carteira + boleto.NossoNumero).CalcularDVBradesco();
                 boleto.NossoNumeroFormatado = $"{boleto.Carteira.PadLeft(3, '0')}/{boleto.NossoNumero}-{boleto.NossoNumeroDV}";
             }
-
         }
 
         public virtual string FormataCodigoBarraCampoLivre(Boleto boleto)
         {
             var contaBancaria = boleto.Banco.Beneficiario.ContaBancaria;
-            return $"{contaBancaria.Agencia}{boleto.Carteira}{boleto.NossoNumero}{contaBancaria.Conta}{"0"}";
+            var carteira = boleto.Carteira.Length == 3 ? boleto.Carteira.Replace("0", Empty) : boleto.Carteira;
+
+            return $"{contaBancaria.Agencia}{carteira}{boleto.NossoNumero}{contaBancaria.Conta}{"0"}";
         }
     }
 }

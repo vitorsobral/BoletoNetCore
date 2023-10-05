@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
 using BoletoNetCore.Exceptions;
 using BoletoNetCore.Extensions;
-using static System.String;
+using System;
+using System.Collections.Generic;
 
 namespace BoletoNetCore
 {
-    internal sealed partial class BancoBradesco : BancoFebraban<BancoBradesco> , IBanco
+    internal sealed partial class BancoBradesco : BancoFebraban<BancoBradesco>, IBanco
     {
         public BancoBradesco()
         {
@@ -35,16 +34,6 @@ namespace BoletoNetCore
             Beneficiario.Codigo = codigoBeneficiario.Length <= 20 ? codigoBeneficiario.PadLeft(20, '0') : throw BoletoNetCoreException.CodigoBeneficiarioInvalido(codigoBeneficiario, 20);
 
             Beneficiario.CodigoFormatado = $"{contaBancaria.Agencia}-{contaBancaria.DigitoAgencia} / {contaBancaria.Conta}-{contaBancaria.DigitoConta}";
-        }
-
-        public override string FormataCodigoBarraCampoLivre(Boleto boleto)
-        {
-            if (boleto.Carteira.Length == 3)
-            {
-                boleto.Carteira = boleto.Carteira.Replace("0", "");
-            }
-
-            return base.FormataCodigoBarraCampoLivre(boleto);
         }
     }
 }
